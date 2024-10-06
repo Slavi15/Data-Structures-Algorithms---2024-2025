@@ -4,8 +4,6 @@
 #include <iostream>
 #include <algorithm>
 
-// https://www.hackerrank.com/contests/sda-hw-1-2023/challenges/-6-3/problem
-
 int main() {
 	std::ios_base::sync_with_stdio(false);
 	std::cin.tie(nullptr);
