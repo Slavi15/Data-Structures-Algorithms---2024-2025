@@ -1,0 +1,1 @@
+## Задача: Pass SDA - [HackerRank](<https://www.hackerrank.com/contests/practice-1-sda/challenges/mission-sda/problem>)
