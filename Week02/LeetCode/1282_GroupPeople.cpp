@@ -2,6 +2,8 @@
 #include <vector>
 #include <unordered_map>
 
+// https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to/solutions/4029119/video-solution-explanation-with-drawings-in-depth-c-java/
+
 class Solution
 {
 public:
