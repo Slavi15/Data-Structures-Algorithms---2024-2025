@@ -34,3 +34,16 @@ public:
 		return result;
 	}
 };
+
+int main()
+{
+	std::vector<int> arr{ 2, 5, 8, 3, 12, 14, 20, 1 };
+
+	Solution s;
+	std::vector<int> res = s.evensOdds(arr);
+
+	for (size_t i = 0; i < res.size(); i++)
+		std::cout << res[i] << " ";
+
+	return 0;
+}
