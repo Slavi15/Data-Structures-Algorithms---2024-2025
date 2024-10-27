@@ -2,7 +2,7 @@
 
 ## 02. Find Minimum in Rotated Sorted Array - [LeetCode](<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/>)
 
-## 03. Find Minimum in Rotated Sorted Array || - [LeetCode](<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/>)
+## 03. Find Minimum in Rotated Sorted Array 2 - [LeetCode](<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/>)
 
 ## 04. Search in Rotated Sorted Array - [LeetCode](<https://leetcode.com/problems/search-in-rotated-sorted-array/description/>)
 
