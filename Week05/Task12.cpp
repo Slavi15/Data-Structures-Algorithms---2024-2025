@@ -1,56 +1,46 @@
-struct ListNode {
-	int val;
-	ListNode* next;
-	ListNode() : val(0), next(nullptr) {}
-	ListNode(int x) : val(x), next(nullptr) {}
-	ListNode(int x, ListNode* next) : val(x), next(next) {}
-};
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 
-class Solution
-{
+class Solution {
 public:
-	ListNode* partition(ListNode* head, int x)
+	int getLength(ListNode* head)
 	{
-		if (!head || !head->next) return nullptr;
-
-		ListNode* lhead = nullptr, * rhead = nullptr;
-		ListNode* left = nullptr, * right = nullptr;
+		int len = 0;
 
 		while (head != nullptr)
 		{
-			if (head->val < x)
-			{
-				if (!lhead)
-				{
-					left = head;
-					lhead = left;
-				}
-				else
-				{
-					left->next = head;
-					left = left->next;
-				}
-			}
-			else
-			{
-				if (!rhead)
-				{
-					right = head;
-					rhead = right;
-				}
-				else
-				{
-					right->next = head;
-					right = right->next;
-				}
-			}
-
+			len++;
 			head = head->next;
 		}
 
-		if (right != nullptr) right->next = nullptr;
-		if (left != nullptr) left->next = rhead;
+		return len;
+	}
 
-		return lhead ? lhead : rhead;
+	ListNode* removeNthFromEnd(ListNode* head, int n)
+	{
+		ListNode* curr = head;
+
+		int removeIndex = getLength(head) - n;
+		int idx = 1;
+
+		if (removeIndex - 1 == -1) return head->next;
+
+		while (curr != nullptr)
+		{
+			if (idx == removeIndex) curr->next = curr->next->next;
+
+			idx++;
+			curr = curr->next;
+		}
+
+		return head;
 	}
 };

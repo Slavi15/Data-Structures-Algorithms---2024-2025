@@ -1,27 +1,21 @@
 struct ListNode {
 	int val;
 	ListNode* next;
-	ListNode() : val(0), next(nullptr) {}
-	ListNode(int x) : val(x), next(nullptr) {}
-	ListNode(int x, ListNode* next) : val(x), next(next) {}
+	ListNode(int x) : val(x), next(NULL) {}
 };
 
 class Solution
 {
 public:
-	ListNode* reverseList(ListNode* head)
+	void deleteNode(ListNode* node)
 	{
-		ListNode* curr = head, * next = nullptr, * prev = nullptr;
-
-		while (curr != nullptr)
-		{
-			next = curr->next;
-			curr->next = prev;
-
-			prev = curr;
-			curr = next;
-		}
-
-		return prev;
+		node->val = node->next->val;
+		node->next = node->next->next;
 	}
+};
+
+struct ListNode {
+	int val;
+	ListNode* next;
+	ListNode(int x) : val(x), next(NULL) {}
 };

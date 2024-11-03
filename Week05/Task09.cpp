@@ -1,43 +1,36 @@
-struct ListNode {
-	int val;
-	ListNode* next;
-	ListNode() : val(0), next(nullptr) {}
-	ListNode(int x) : val(x), next(nullptr) {}
-	ListNode(int x, ListNode* next) : val(x), next(next) {}
-};
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 
-class Solution {
+class Solution
+{
 public:
-	int getLength(ListNode* head)
+	ListNode* reverseBetween(ListNode* head, int left, int right)
 	{
-		int len = 0;
+		ListNode* dummy = new ListNode(0, head);
+		ListNode* pre = dummy;
 
-		while (head != nullptr)
+		// we get node just before left
+		for (int i = 0; i < left - 1; i++) pre = pre->next;
+
+		// exactly node left
+		ListNode* curr = pre->next;
+
+		for (int i = 0; i < right - left; i++)
 		{
-			len++;
-			head = head->next;
+			ListNode* forw = curr->next;
+			curr->next = forw->next;
+			forw->next = pre->next;
+			pre->next = forw;
 		}
 
-		return len;
-	}
-
-	ListNode* removeNthFromEnd(ListNode* head, int n)
-	{
-		ListNode* curr = head;
-
-		int removeIndex = getLength(head) - n;
-		int idx = 1;
-
-		if (removeIndex - 1 == -1) return head->next;
-
-		while (curr != nullptr)
-		{
-			if (idx == removeIndex) curr->next = curr->next->next;
-
-			idx++;
-			curr = curr->next;
-		}
-
-		return head;
+		return dummy->next;
 	}
 };

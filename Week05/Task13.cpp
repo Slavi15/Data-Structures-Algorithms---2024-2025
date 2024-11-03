@@ -12,25 +12,22 @@
 class Solution
 {
 public:
-	bool isPalindrome(ListNode* head)
+	ListNode* oddEvenList(ListNode* head)
 	{
-		std::stack<int> stack;
-		ListNode* curr = head;
+		if (!head || !head->next) return head;
 
-		while (curr != nullptr)
+		ListNode* odd = head, * even = head->next, * temp = head->next;
+
+		while (even && even->next)
 		{
-			stack.push(curr->val);
-			curr = curr->next;
+			odd->next = even->next;
+			even->next = even->next->next;
+
+			odd = odd->next;
+			even = even->next;
 		}
 
-		while (head != nullptr)
-		{
-			if (head->val != stack.top()) return false;
-
-			stack.pop();
-			head = head->next;
-		}
-
-		return true;
+		odd->next = temp;
+		return head;
 	}
 };

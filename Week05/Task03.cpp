@@ -1,43 +1,41 @@
-struct ListNode {
-	int val;
-	ListNode* next;
-	ListNode(int x) : val(x), next(NULL) {}
-};
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 
 class Solution
 {
 public:
-	bool hasCycle(ListNode* head)
+	ListNode* deleteDuplicates(ListNode* head)
 	{
-		std::unordered_map<ListNode*, bool> uMap;
+		ListNode* dummy = new ListNode(0, head);
+		ListNode* prev = dummy;
 
 		while (head != nullptr)
 		{
-			if (uMap.find(head) != uMap.end()) return true;
+			if (head->next && head->next->val == head->val)
+			{
+				while (head->next && head->next->val == head->val)
+				{
+					head = head->next;
+				}
 
-			uMap[head] = true;
+				prev->next = head->next;
+			}
+			else
+			{
+				prev = head;
+			}
+
 			head = head->next;
 		}
 
-		return false;
-	}
-};
-
-class Solution
-{
-public:
-	bool hasCycle(ListNode* head)
-	{
-		ListNode* slow = head, * fast = head;
-
-		while (fast != nullptr && fast->next != nullptr)
-		{
-			slow = slow->next;
-			fast = fast->next->next;
-
-			if (slow == fast) return true;
-		}
-
-		return false;
+		return dummy->next;
 	}
 };

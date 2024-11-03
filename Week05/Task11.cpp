@@ -1,54 +1,51 @@
-struct ListNode {
-	int val;
-	ListNode* next;
-	ListNode(int x) : val(x), next(NULL) {}
-};
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 
 class Solution
 {
 public:
-	ListNode* detectCycle(ListNode* head)
+	int getLength(ListNode* head)
 	{
-		std::unordered_map<ListNode*, bool> uMap;
+		int res = 0;
 
 		while (head != nullptr)
 		{
-			if (uMap.find(head) != uMap.end())
-			{
-				return head;
-			}
-
-			uMap[head] = true;
+			res++;
 			head = head->next;
 		}
 
-		return nullptr;
+		return res;
 	}
-};
 
-class Solution
-{
-public:
-	ListNode* detectCycle(ListNode* head)
+	ListNode* getIntersectionNode(ListNode* headA, ListNode* headB)
 	{
-		ListNode* slow = head;
-		ListNode* fast = head;
+		int lenA = getLength(headA);
+		int lenB = getLength(headB);
 
-		while (fast != nullptr && fast->next != nullptr)
+		while (lenA < lenB)
 		{
-			slow = slow->next;
-			fast = fast->next->next;
+			lenA++;
+			headB = headB->next;
+		}
 
-			if (slow == fast)
-			{
-				while (fast != head) // in order for the head and fast pointer to meet at the cycle node
-				{
-					head = head->next;
-					fast = fast->next;
-				}
+		while (lenB < lenA)
+		{
+			lenB++;
+			headA = headA->next;
+		}
 
-				return head;
-			}
+		while (headA != nullptr && headB != nullptr)
+		{
+			if (headA == headB) return headA;
+
+			headA = headA->next;
+			headB = headB->next;
 		}
 
 		return nullptr;
