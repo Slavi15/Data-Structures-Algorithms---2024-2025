@@ -9,3 +9,5 @@
 ## Task 02. Коледно BST (Difficulty: Medium) - [HackerRank](<https://www.hackerrank.com/contests/sda-hw-5-2024/challenges/validate-bst-2>)
 
 ## Task 03. Родословно дърво (Difficulty: Hard) - [HackerRank](<https://www.hackerrank.com/contests/sda-hw-5-2024/challenges/parent>)
+
+## Task 04. Час по рисуване (Difficulty: Medium) - [HackerRank](<https://www.hackerrank.com/contests/sda-hw-6-2023/challenges/task3score>)
