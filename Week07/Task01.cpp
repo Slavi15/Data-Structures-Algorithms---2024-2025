@@ -19,9 +19,32 @@ public:
 		return findMin(root->left);
 	}
 
+	TreeNode* removeRoot(TreeNode* root)
+	{
+		if (!root->left)
+		{
+			TreeNode* temp = root->right;
+			delete root;
+			return temp;
+		}
+		else if (!root->right)
+		{
+			TreeNode* temp = root->left;
+			delete root;
+			return temp;
+		}
+
+		TreeNode* temp = findMin(root->right);
+		root->val = temp->val;
+		root->right = deleteNode(root->right, temp->val);
+
+		return root;
+	}
+
 	TreeNode* deleteNode(TreeNode* root, int key)
 	{
-		if (!root) return nullptr;
+		if (!root)
+			return nullptr;
 
 		if (key < root->val)
 		{
@@ -33,22 +56,7 @@ public:
 		}
 		else
 		{
-			if (!root->left)
-			{
-				TreeNode* temp = root->right;
-				delete root;
-				return temp;
-			}
-			else if (!root->right)
-			{
-				TreeNode* temp = root->left;
-				delete root;
-				return temp;
-			}
-
-			TreeNode* temp = findMin(root->right);
-			root->val = temp->val;
-			root->right = deleteNode(root->right, temp->val);
+			return removeRoot(root);
 		}
 
 		return root;
