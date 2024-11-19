@@ -21,3 +21,6 @@
 ## Задача 09. - Invert Binary Tree (Easy) - [LeetCode](<https://leetcode.com/problems/invert-binary-tree>)
 
 ## Задача 10. - Kth Smallest Element in a BST (Medium) - [LeetCode](<https://leetcode.com/problems/kth-smallest-element-in-a-bst>)
+
+## Задача 11. - Merge Two Binary Trees (Easy) - [LeetCode](<https://leetcode.com/problems/merge-two-binary-trees>)
+
