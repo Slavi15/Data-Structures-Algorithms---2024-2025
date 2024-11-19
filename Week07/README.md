@@ -2,6 +2,8 @@
 
 ## Задача 01. - Delete Node in a BST (Medium) - [LeetCode](<https://leetcode.com/problems/delete-node-in-a-bst>)
 
+## Задача 01.5. - Insert Node in a BST (Medium) - [LeetCode](<https://leetcode.com/problems/insert-into-a-binary-search-tree>)
+
 ## Задача 02. - Maximum Depth of Binary Tree (Easy) - [LeetCode](<https://leetcode.com/problems/maximum-depth-of-binary-tree>)
 
 ## Задача 03. - Minimum Depth of Binary Tree (Easy) - [LeetCode](<https://leetcode.com/problems/minimum-depth-of-binary-tree>)
