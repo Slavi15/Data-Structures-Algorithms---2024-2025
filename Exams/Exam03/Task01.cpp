@@ -24,7 +24,7 @@ void printBFS(Node* root)
 	{
 		int size = q.size();
 
-		std::vector<Node*> levelTree;
+		std::vector<int> levelTree;
 
 		for (int i = 0; i < size; i++)
 		{
@@ -34,31 +34,55 @@ void printBFS(Node* root)
 			if (currentNode->left) q.push(currentNode->left);
 			if (currentNode->right) q.push(currentNode->right);
 
-			levelTree.push_back(currentNode);
+			levelTree.push_back(currentNode->val);
 		}
 
 		if (idx % 2 == 0)
 		{
 			for (int i = 0; i < levelTree.size(); i++)
 			{
-				std::cout << levelTree[i]->val << " ";
+				std::cout << levelTree[i] << " ";
 			}
 		}
 		else
 		{
 			for (int i = levelTree.size() - 1; i >= 0; i--)
 			{
-				std::cout << levelTree[i]->val << " ";
+				std::cout << levelTree[i] << " ";
 			}
 		}
 
 		idx++;
-
-		for (int i = 0; i < levelTree.size(); i++)
-		{
-			delete levelTree[i];
-		}
 	}
+}
+
+Node* insertNode(Node* root, int value)
+{
+	if (!root)
+	{
+		return new Node(value);
+	}
+
+	if (value < root->val)
+	{
+		root->left = insertNode(root->left, value);
+	}
+	else if (value > root->val)
+	{
+		root->right = insertNode(root->right, value);
+	}
+
+	return root;
+}
+
+void free(Node* root)
+{
+	if (!root) return;
+
+	free(root->left);
+	free(root->right);
+
+	delete root;
 }
 
 int main()
@@ -66,38 +90,18 @@ int main()
 	{
 		Node* root = new Node(8);
 
-		Node* lhs1 = new Node(3);
-		Node* rhs1 = new Node(10);
-
-		root->left = lhs1;
-		root->right = rhs1;
-
-		Node* lhs2 = new Node(1);
-		Node* rhs2 = new Node(6);
-
-		lhs1->left = nullptr;
-		lhs1->right = nullptr;
-
-		lhs1->left = lhs2;
-		lhs1->right = rhs2;
-
-		Node* lhs3 = new Node(4);
-		Node* rhs3 = new Node(7);
-
-		rhs2->left = lhs3;
-		rhs2->right = rhs3;
-
-		Node* rhs4 = new Node(14);
-
-		rhs1->left = nullptr;
-		rhs1->right = rhs4;
-
-		Node* lhs4 = new Node(13);
-
-		rhs4->left = lhs4;
-		rhs4->right = nullptr;
+		root = insertNode(root, 3);
+		root = insertNode(root, 10);
+		root = insertNode(root, 1);
+		root = insertNode(root, 6);
+		root = insertNode(root, 4);
+		root = insertNode(root, 7);
+		root = insertNode(root, 14);
+		root = insertNode(root, 13);
 
 		printBFS(root);
+
+		free(root);
 	}
 
 	return 0;
