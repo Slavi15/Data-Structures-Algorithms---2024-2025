@@ -1,4 +1,4 @@
-# Week 06
+# Week 07
 
 ## Задача 01. - Delete Node in a BST (Medium) - [LeetCode](<https://leetcode.com/problems/delete-node-in-a-bst>)
 
