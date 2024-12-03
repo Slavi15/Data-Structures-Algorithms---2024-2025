@@ -27,4 +27,3 @@
 ## Задача 13. - Jump Game (Medium) - [LeetCode](<https://leetcode.com/problems/jump-game/>)
 
 ## Задача 14. - House Robber III (Medium) - [LeetCode](<https://leetcode.com/problems/house-robber-iii/description/>)
-
