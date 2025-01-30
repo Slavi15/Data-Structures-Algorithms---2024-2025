@@ -22,12 +22,7 @@ struct DJS
 
 	int findParent(int n)
 	{
-		if (parents[n] == n)
-		{
-			return n;
-		}
-
-		return parents[n] = findParent(parents[n]);
+		return parents[n] == n ? n : parents[n] = findParent(parents[n]);
 	}
 
 	void unify(int x, int y)
